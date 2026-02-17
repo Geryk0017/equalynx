@@ -27,38 +27,31 @@
 
                 <ul class="menu w-full grow">
                     <li>
-                        <Link href="/" class="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="User Management">
-                            <Users />
-                            <span class="is-drawer-close:hidden">User Management</span>
-                        </Link>
+                        <NavbarButton href="/" :icon="Users" label="User Management" />
                     </li>
 
                     <li>
-                        <Link href="/inventory" class="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Inventory">
-                            <Package />
-                            <span class="is-drawer-close:hidden">Inventory</span>
-                        </Link>
+                        <NavbarButton href="/inventory" :icon="Package" label="Inventory" />
                     </li>
 
                     <li>
-                        <Link href="/notifications" class="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Notification">
-                            <Bell />
-                            <span class="is-drawer-close:hidden">Notification</span>
-                        </Link>
+                        <NavbarButton href="/notifications" :icon="Bell" label="Notifications" />
                     </li>
 
                     <li>
-                        <Link href="/activity-logs" class="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Activity Logs">
-                            <History />
-                            <span class="is-drawer-close:hidden">Activity Logs</span>
-                        </Link>
+                        <NavbarButton href="/activity-logs" :icon="History" label="Activity Logs" />
                     </li>
 
                     <li>
-                        <Link href="/settings" class="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Settings">
-                            <Settings2 />
-                            <span class="is-drawer-close:hidden">Settings</span>
-                        </Link>
+                        <NavbarButton href="/transactions" :icon="ArrowLeftRight" label="Transactions" />
+                    </li>
+
+                    <li>
+                        <NavbarButton href="/dashboard" :icon="LayoutDashboard" label="Dashboard" />
+                    </li>
+
+                    <li>
+                        <NavbarButton href="/settings" :icon="Settings2" label="Settings" />
                     </li>
                 </ul>
             </div>
@@ -67,7 +60,7 @@
 </template>
 
 <script setup>
-import { PanelLeftOpen, Users, Settings2, Package, Bell, History } from 'lucide-vue-next';
+import { PanelLeftOpen, Users, Settings2, Package, Bell, History, LayoutDashboard, ArrowLeftRight } from 'lucide-vue-next';
 import logo from '../asset/image/logo.png'
-import { Link } from '@inertiajs/vue3';
+import NavbarButton from './Buttons/NavbarButton.vue';
 </script>
