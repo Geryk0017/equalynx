@@ -3,16 +3,25 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createApp, h } from 'vue';
 import '../css/app.css';
 import { initializeTheme } from './composables/useAppearance';
+import Navbar from './components/Navbar.vue';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
 createInertiaApp({
     title: (title) => (title ? `${title} - ${appName}` : appName),
-    resolve: (name) =>
-        resolvePageComponent(
+    resolve: (name) => {
+        const page = resolvePageComponent(
             `./pages/${name}.vue`,
             import.meta.glob('./pages/**/*.vue'),
-        ),
+        );
+        
+        // Set default layout for all pages
+        page.then((module) => {
+            module.default.layout = module.default.layout || Navbar;
+        });
+        
+        return page;
+    },
     setup({ el, App, props, plugin }) {
         createApp({ render: () => h(App, props) })
             .use(plugin)
